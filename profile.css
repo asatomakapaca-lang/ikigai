@@ -1,0 +1,172 @@
+/* ═══════════════════════════
+   PROFILE PAGE — profile.css
+═══════════════════════════ */
+
+/* Основной контейнер профиля */
+.profile-container {
+    flex: 1;
+    max-width: 600px;
+    border-left: 1px solid #2a2a2a;
+    border-right: 1px solid #2a2a2a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Шапка со стрелкой ── */
+.profile-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid #2a2a2a;
+    position: sticky;
+    top: 0;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 999px;
+    transition: background 0.2s;
+}
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+.back-btn i {
+    font-size: 16px;
+    color: #aaa;
+}
+
+/* ── Блок инфо ── */
+.profile-info-block {
+    padding: 20px 20px 0;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.profile-top-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.profile-avatar {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #1a1a2e;
+    flex-shrink: 0;
+}
+
+/* Статистика */
+.profile-stats {
+    display: flex;
+    gap: 28px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.stat-num {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Биография */
+.profile-bio {
+    margin-bottom: 16px;
+}
+
+.profile-role {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 6px;
+    line-height: 1.5;
+}
+
+.profile-role span {
+    font-weight: 400;
+    color: #aaa;
+}
+
+.profile-desc {
+    font-size: 14px;
+    color: #ccc;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ── Кнопки действий ── */
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    padding-bottom: 20px;
+}
+
+.btn-follow {
+    flex: 1;
+    padding: 10px 0;
+    border-radius: 8px;
+    border: none;
+    background: #768fe9;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+.btn-follow:hover {
+    background: #5a73d4;
+}
+.btn-follow:active {
+    transform: scale(0.97);
+}
+.btn-follow.following {
+    background: #2a2a3a;
+    color: #aaa;
+    border: 1px solid #444;
+}
+
+.btn-message {
+    flex: 1;
+    padding: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-message:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+/* ── Посты ── */
+.profile-posts {
+    display: flex;
+    flex-direction: column;
+}

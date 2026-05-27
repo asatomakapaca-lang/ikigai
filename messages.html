@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Network — Сообщения</title>
+    <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ═══════════════════════════
+           СТРАНИЦА СООБЩЕНИЙ
+        ═══════════════════════════ */
+
+        .messages-layout {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ── ЛЕВАЯ ПАНЕЛЬ ЧАТОВ ── */
+        .messages-sidebar {
+            border-right: 1px solid #1e293b;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .messages-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .messages-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .messages-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .messages-filter {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #151c24;
+            border: 1px solid #1e293b;
+            color: #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .messages-filter:hover { background: #1e293b; }
+        .messages-filter i { font-size: 12px; color: #64748b; }
+
+        .messages-icon-btn {
+            background: none;
+            border: none;
+            color: #64748b;
+            font-size: 16px;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .messages-icon-btn:hover { background: #1e293b; color: #fff; }
+
+        .messages-search {
+            padding: 12px 16px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .messages-search-bar {
+            background: #151c24;
+            border-radius: 20px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid transparent;
+            transition: 0.2s;
+        }
+        .messages-search-bar:focus-within {
+            border-color: #768fe9;
+            background: #0b0f14;
+        }
+        .messages-search-bar i { color: #64748b; font-size: 14px; }
+        .messages-search-bar input {
+            background: none;
+            border: none;
+            color: #fff;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+        }
+        .messages-search-bar input::placeholder { color: #64748b; }
+
+        .chat-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .chat-list::-webkit-scrollbar { width: 4px; }
+        .chat-list::-webkit-scrollbar-track { background: transparent; }
+        .chat-list::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 2px; }
+
+        .empty-inbox {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 40px 24px;
+            color: #64748b;
+        }
+
+        .empty-inbox-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: #151c24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        .empty-inbox-icon i { font-size: 28px; color: #64748b; }
+
+        .empty-inbox h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .empty-inbox p {
+            font-size: 15px;
+            color: #64748b;
+            text-align: center;
+        }
+
+        /* ── ПРАВАЯ ПАНЕЛЬ (empty state) ── */
+        .messages-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            background: #0b0f14;
+            position: relative;
+        }
+
+        .start-convo-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #151c24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        .start-convo-icon i { font-size: 38px; color: #94a3b8; }
+
+        .messages-main h2 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff;
+        }
+        .messages-main p {
+            font-size: 15px;
+            color: #64748b;
+            text-align: center;
+            max-width: 320px;
+        }
+
+        .btn-new-chat {
+            background: none;
+            border: 1px solid #768fe9;
+            color: #768fe9;
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: 0.2s;
+        }
+        .btn-new-chat:hover {
+            background: #768fe9;
+            color: #fff;
+        }
+
+        /* Sparkle decoration (bottom right) */
+        .sparkle {
+            position: absolute;
+            bottom: 28px;
+            right: 28px;
+            font-size: 28px;
+            color: #768fe9;
+            opacity: 0.6;
+            animation: sparkle-pulse 2.5s ease-in-out infinite;
+        }
+        @keyframes sparkle-pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1) rotate(0deg); }
+            50% { opacity: 0.8; transform: scale(1.15) rotate(15deg); }
+        }
+
+        /* ── ЧАТЫ (когда есть) ── */
+        .chat-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #0f1923;
+            transition: background 0.15s;
+        }
+        .chat-item:hover { background: rgba(255,255,255,0.03); }
+        .chat-item.active { background: rgba(118,143,233,0.08); }
+
+        .chat-item-avatar { position: relative; flex-shrink: 0; }
+        .chat-item-avatar .avatar { width: 44px; height: 44px; }
+
+        .online-dot {
+            position: absolute;
+            bottom: 1px;
+            right: 1px;
+            width: 11px;
+            height: 11px;
+            background: #22c55e;
+            border-radius: 50%;
+            border: 2px solid #0b0f14;
+        }
+
+        .chat-item-body { flex: 1; min-width: 0; }
+        .chat-item-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+        .chat-item-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: #fff;
+        }
+        .chat-item-time {
+            font-size: 12px;
+            color: #64748b;
+        }
+        .chat-item-preview {
+            font-size: 14px;
+            color: #64748b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .chat-item-preview.unread { color: #e2e8f0; font-weight: 500; }
+
+        .unread-badge {
+            background: #768fe9;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5px;
+            flex-shrink: 0;
+        }
+
+        /* ── ACTIVE CHAT ── */
+        .chat-window {
+            display: none;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+        }
+        .chat-window.active { display: flex; }
+
+        .chat-window-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid #1e293b;
+        }
+        .chat-window-header .chat-user-info { flex: 1; }
+        .chat-window-header .chat-user-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+        }
+        .chat-window-header .chat-user-handle {
+            font-size: 13px;
+            color: #64748b;
+        }
+        .chat-window-header-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        .messages-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .messages-area::-webkit-scrollbar { width: 4px; }
+        .messages-area::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 2px; }
+
+        .msg-bubble {
+            max-width: 70%;
+            padding: 10px 14px;
+            border-radius: 18px;
+            font-size: 15px;
+            line-height: 1.5;
+            position: relative;
+        }
+        .msg-bubble.incoming {
+            background: #151c24;
+            color: #e2e8f0;
+            border-bottom-left-radius: 4px;
+            align-self: flex-start;
+        }
+        .msg-bubble.outgoing {
+            background: #768fe9;
+            color: #fff;
+            border-bottom-right-radius: 4px;
+            align-self: flex-end;
+        }
+        .msg-time {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 4px;
+            text-align: right;
+        }
+        .msg-time.incoming { text-align: left; }
+
+        .msg-group { display: flex; flex-direction: column; }
+        .msg-group.incoming { align-items: flex-start; }
+        .msg-group.outgoing { align-items: flex-end; }
+
+        .chat-input-area {
+            padding: 14px 16px;
+            border-top: 1px solid #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .chat-input-wrap {
+            flex: 1;
+            background: #151c24;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            gap: 10px;
+            border: 1px solid transparent;
+            transition: 0.2s;
+        }
+        .chat-input-wrap:focus-within { border-color: #768fe9; }
+        .chat-input-wrap input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 15px;
+        }
+        .chat-input-wrap input::placeholder { color: #64748b; }
+        .chat-input-wrap button {
+            background: none;
+            border: none;
+            color: #64748b;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0;
+            transition: 0.15s;
+        }
+        .chat-input-wrap button:hover { color: #768fe9; }
+
+        .btn-send {
+            background: #768fe9;
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            flex-shrink: 0;
+        }
+        .btn-send:hover { background: #5a73d4; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ЛЕВАЯ ПАНЕЛЬ НАВИГАЦИИ -->
+    <aside class="left-sidebar">
+        <div class="profile-brief">
+            <img src="png/Sylus ~love and deepspace.jpg" alt="Avatar" class="avatar">
+            <div class="profile-info">
+                <span class="name">Asato.teruko</span>
+                <span class="username">@asato_teruko</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a href="index.html" class="menu-item"><i class="fa-solid fa-house"></i> Главная</a>
+            <a href="#" class="menu-item"><i class="fa-solid fa-compass"></i> Лента</a>
+            <a href="#" class="menu-item"><i class="fa-solid fa-palette"></i> Искать художника</a>
+            <a href="#" class="menu-item"><i class="fa-solid fa-bell"></i> Уведомления</a>
+            <a href="#" class="menu-item active"><i class="fa-solid fa-envelope"></i> Сообщения</a>
+        </nav>
+
+        <button class="btn-publish">Опубликовать</button>
+
+        <div class="sidebar-footer">
+            <a href="#">Настройки</a>
+            <a href="#">Помощь</a>
+        </div>
+    </aside>
+
+    <!-- СООБЩЕНИЯ -->
+    <div class="messages-layout" style="grid-column: 2 / 4;">
+
+        <!-- Список чатов -->
+        <div class="messages-sidebar">
+            <div class="messages-header">
+                <h2>Chat</h2>
+                <div class="messages-header-actions">
+                   <button class="messages-icon-btn" id="btn-compose" title="Новый чат"><i class="fa-solid fa-pen-to-square"></i></button>
+                </div>
+            </div>
+
+            <div class="messages-search">
+                <div class="messages-search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+
+            <!-- Пустое состояние -->
+            <div class="empty-inbox" id="empty-inbox">
+                <div class="empty-inbox-icon">
+                    <i class="fa-regular fa-comment-dots"></i>
+                </div>
+                <h3>Пустой входящий ящик</h3>
+                <p>Напишите кому-нибудь</p>
+            </div>
+
+            <!-- Список чатов (скрыт по умолчанию, показывается через JS) -->
+            <div class="chat-list" id="chat-list" style="display:none;">
+                <div class="chat-item" data-user="kumo" onclick="openChat('kumo')">
+                    <div class="chat-item-avatar">
+                        <img src="png/Sylus - Love and Deepspace.jpg" alt="Avatar" class="avatar">
+                        <span class="online-dot"></span>
+                    </div>
+                    <div class="chat-item-body">
+                        <div class="chat-item-top">
+                            <span class="chat-item-name">kumo</span>
+                            <span class="chat-item-time">12:34</span>
+                        </div>
+                        <div class="chat-item-preview unread">привет! видела мои новые скетчи? :D</div>
+                    </div>
+                    <div class="unread-badge">2</div>
+                </div>
+
+                <div class="chat-item" data-user="ayami" onclick="openChat('ayami')">
+                    <div class="chat-item-avatar">
+                        <img src="png/hhmnyaring icon!☆.jpg" alt="Avatar" class="avatar">
+                    </div>
+                    <div class="chat-item-body">
+                        <div class="chat-item-top">
+                            <span class="chat-item-name">ayami</span>
+                            <span class="chat-item-time">May 21</span>
+                        </div>
+                        <div class="chat-item-preview">спасибо за лайк ❤️</div>
+                    </div>
+                </div>
+
+                <div class="chat-item" data-user="vissens" onclick="openChat('vissens')">
+                    <div class="chat-item-avatar">
+                        <img src="png/yok bişi.jpg" alt="Avatar" class="avatar">
+                    </div>
+                    <div class="chat-item-body">
+                        <div class="chat-item-top">
+                            <span class="chat-item-name">vissens</span>
+                            <span class="chat-item-time">May 18</span>
+                        </div>
+                        <div class="chat-item-preview">omg your style is so cute!!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая панель -->
+        <div class="messages-main" id="messages-main">
+            <div class="start-convo-icon">
+                <i class="fa-regular fa-comment-dots"></i>
+            </div>
+            <h2>Начать разговор</h2>
+            <p>Выбирайте из существующих разговоров или начните новый.</p>
+            <button class="btn-new-chat" id="btn-new-chat">New chat</button>
+
+            <div class="sparkle"></div>
+        </div>
+
+        <!-- Окно чата (скрыто по умолчанию) -->
+        <div class="chat-window" id="chat-window">
+            <div class="chat-window-header">
+                <img src="" alt="Avatar" class="avatar" id="chat-avatar">
+                <div class="chat-user-info">
+                    <div class="chat-user-name" id="chat-name"></div>
+                    <div class="chat-user-handle" id="chat-handle"></div>
+                </div>
+                <div class="chat-window-header-actions">
+                    <button class="messages-icon-btn"><i class="fa-solid fa-circle-info"></i></button>
+                </div>
+            </div>
+
+            <div class="messages-area" id="messages-area"></div>
+
+            <div class="chat-input-area">
+                <div class="chat-input-wrap">
+                    <button><i class="fa-solid fa-image"></i></button>
+                    <input type="text" id="chat-input" placeholder="Написать сообщение...">
+                    <button><i class="fa-regular fa-face-smile"></i></button>
+                </div>
+                <button class="btn-send" id="btn-send">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const chats = {
+    kumo: {
+        name: 'kumo',
+        handle: '@kumo.art',
+        avatar: 'png/Sylus - Love and Deepspace.jpg',
+        messages: [
+            { from: 'them', text: 'привет! видела мои новые скетчи? :D', time: '12:30' },
+            { from: 'them', text: 'только что запостила два новых', time: '12:31' },
+        ]
+    },
+    ayami: {
+        name: 'ayami',
+        handle: '@ayami_draws',
+        avatar: 'png/hhmnyaring icon!☆.jpg',
+        messages: [
+            { from: 'me', text: 'обожаю твой стиль!', time: 'May 21' },
+            { from: 'them', text: 'спасибо за лайк ❤️', time: 'May 21' },
+        ]
+    },
+    vissens: {
+        name: 'vissens',
+        handle: '@wissensv',
+        avatar: 'png/yok bişi.jpg',
+        messages: [
+            { from: 'them', text: 'omg your style is so cute!!', time: 'May 18' },
+        ]
+    }
+};
+
+let currentUser = null;
+
+// Показать демо-чаты при клике "New chat" или через кнопку в сайдбаре
+function showChats() {
+    document.getElementById('empty-inbox').style.display = 'none';
+    document.getElementById('chat-list').style.display = 'block';
+}
+
+document.getElementById('btn-new-chat').addEventListener('click', showChats);
+document.getElementById('btn-compose').addEventListener('click', showChats);
+
+function openChat(userId) {
+    const chat = chats[userId];
+    if (!chat) return;
+
+    currentUser = userId;
+
+    // Подсветить активный чат
+    document.querySelectorAll('.chat-item').forEach(el => {
+        el.classList.toggle('active', el.dataset.user === userId);
+    });
+
+    // Убрать бейдж непрочитанных
+    const item = document.querySelector(`.chat-item[data-user="${userId}"]`);
+    const badge = item?.querySelector('.unread-badge');
+    if (badge) badge.remove();
+    item?.querySelector('.chat-item-preview')?.classList.remove('unread');
+
+    // Заполнить шапку
+    document.getElementById('chat-avatar').src = chat.avatar;
+    document.getElementById('chat-name').textContent = chat.name;
+    document.getElementById('chat-handle').textContent = chat.handle;
+
+    // Рендер сообщений
+    const area = document.getElementById('messages-area');
+    area.innerHTML = '';
+    chat.messages.forEach(msg => renderMessage(msg, area));
+    area.scrollTop = area.scrollHeight;
+
+    // Показать окно чата
+    document.getElementById('messages-main').style.display = 'none';
+    document.getElementById('chat-window').classList.add('active');
+}
+
+function renderMessage(msg, container) {
+    const group = document.createElement('div');
+    group.className = `msg-group ${msg.from === 'me' ? 'outgoing' : 'incoming'}`;
+
+    const bubble = document.createElement('div');
+    bubble.className = `msg-bubble ${msg.from === 'me' ? 'outgoing' : 'incoming'}`;
+    bubble.textContent = msg.text;
+
+    const time = document.createElement('div');
+    time.className = `msg-time ${msg.from === 'me' ? 'outgoing' : 'incoming'}`;
+    time.textContent = msg.time;
+
+    group.appendChild(bubble);
+    group.appendChild(time);
+    container.appendChild(group);
+}
+
+// Отправка сообщения
+function sendMessage() {
+    if (!currentUser) return;
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    const msg = { from: 'me', text, time: 'сейчас' };
+    chats[currentUser].messages.push(msg);
+
+    const area = document.getElementById('messages-area');
+    renderMessage(msg, area);
+    area.scrollTop = area.scrollHeight;
+
+    // Обновить превью в списке
+    const item = document.querySelector(`.chat-item[data-user="${currentUser}"]`);
+    if (item) {
+        item.querySelector('.chat-item-preview').textContent = text;
+        item.querySelector('.chat-item-time').textContent = 'сейчас';
+    }
+
+    input.value = '';
+}
+
+document.getElementById('btn-send').addEventListener('click', sendMessage);
+document.getElementById('chat-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+</script>
+
+</body>
+</html>

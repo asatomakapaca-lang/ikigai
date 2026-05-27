@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Network</title>
+    <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ЛЕВАЯ ПАНЕЛЬ -->
+        <aside class="left-sidebar">
+            <div class="profile-brief">
+                <img src="png/Sylus ~love and deepspace.jpg" alt="Avatar" class="avatar">
+                <div class="profile-info">
+                    <span class="name">Asato.teruko</span>
+                    <span class="username">@asato_teruko</span>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a href="#" class="menu-item active"><i class="fa-solid fa-house"></i> Главная</a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-compass"></i> Лента</a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-palette"></i> Искать художника</a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-bell"></i> Уведомления</a>
+                <a href="messages.html" class="menu-item">
+    <i class="fa-solid fa-envelope"></i> Сообщения
+</a>
+            </nav>
+
+            <button class="btn-publish">Опубликовать</button>
+
+            <div class="sidebar-footer">
+                <a href="#">Настройки</a>
+                <a href="#">Помощь</a>
+            </div>
+        </aside>
+
+        <!-- ЦЕНТРАЛЬНАЯ ЛЕНТА -->
+        <main class="feed-container">
+            <header class="feed-tabs" id="feed-tabs">
+                <div class="tab active" data-tab="for-you">Для вас</div>
+<div class="tab" data-tab="following">Вы следите</div>
+            </header>
+
+            <div class="feed">
+
+                <!-- ПОСТ 1 -->
+                <article class="post">
+                    <div class="post-avatar">
+                        <img src="png/hhmnyaring icon!☆.jpg" alt="Avatar" class="avatar">
+                    </div>
+                    <div class="post-body">
+                        <div class="post-header">
+                            <a href="profile.html" class="author-name">ayami</a>
+                            <span class="author-username">@ayami_draws</span>
+                            <span class="post-date">· May 17</span>
+                            <button class="post-more"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <p class="post-text">doodle
+                            <span class="tag">#sketch</span>
+                            <span class="tag">#art</span>
+                            <span class="tag">#арт</span>
+                        </p>
+                        <div class="post-images two">
+                            <img src="png/photo_2026-05-19_23-35-43.jpg" alt="Art">
+                            <img src="png/photo_2026-05-19_23-35-43.jpg" alt="Art">
+                        </div>
+                        <div class="post-actions">
+                            <button><i class="fa-regular fa-comment"></i> <span>12</span></button>
+                            <button class="star-btn">
+    <i class="fa-regular fa-star"></i>
+    <span>1</span>
+</button>
+                            <button class="like-btn">
+    <i class="fa-regular fa-heart"></i>
+    <span>47</span>
+</button>
+                            <button><i class="fa-regular fa-eye"></i> <span>214</span></button>
+                            <button class="action-right"><i class="fa-regular fa-bookmark"></i></button>
+                            <button class="repost-btn">
+    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ПОСТ 2 -->
+                <article class="post following-post">
+                    <div class="post-avatar">
+                        <img src="png/yok bişi.jpg" alt="Avatar" class="avatar">
+                    </div>
+                    <div class="post-body">
+                        <div class="post-header">
+                            <span class="author-name">vissens</span>
+                            <span class="author-username">@wissensv</span>
+                            <span class="post-date">· May 18</span>
+                            <button class="post-more"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <p class="post-text">sketches from the last few days aaa
+                            <span class="tag">#sketch</span>
+                            <span class="tag">#art</span>
+                            <span class="tag">#akicsm</span>
+                            <span class="tag">#арт</span>
+                            <span class="tag">#скетч</span>
+                            <span class="tag">#рисунок</span>
+                            <span class="tag">#akihayakawa</span>
+                            <span class="tag">#digitalart</span>
+                        </p>
+                        <div class="post-images two">
+                            <img src="png/Снимок экрана 2026-05-27 225641.png" alt="Art">
+                            <img src="png/Снимок экрана 2026-05-27 234307.png" alt="Art">
+                        </div>
+                        <div class="post-actions">
+                            <button><i class="fa-regular fa-comment"></i> <span>5</span></button>
+                            <button><i class="fa-solid fa-star"></i> <span>3</span></button>
+                            <button><i class="fa-regular fa-heart"></i> <span>89</span></button>
+                            <button><i class="fa-regular fa-eye"></i> <span>512</span></button>
+                            <button class="action-right"><i class="fa-regular fa-bookmark"></i></button>
+                            <button><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ПОСТ 3 -->
+                <article class="post post-nati">
+                    <div class="post-avatar">
+                        <img src="png/загруженное (4).jpg" alt="Avatar" class="avatar">
+                    </div>
+                    <div class="post-body">
+                        <div class="post-header">
+                            <span class="author-name">nati.</span>
+                            <span class="author-username">@nati_art</span>
+                            <span class="post-date">· May 20</span>
+                            <button class="post-more"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <p class="post-text">morning sketch ☕
+                            <span class="tag">#art</span>
+                            <span class="tag">#digitalart</span>
+                        </p>
+                        <div class="post-images tall">
+    <img src="png/photo_2026-05-27_23-42-13.jpg" alt="Art">
+</div>
+                        <div class="post-actions">
+                            <button><i class="fa-regular fa-comment"></i> <span>8</span></button>
+                            <button><i class="fa-solid fa-star"></i> <span>2</span></button>
+                            <button><i class="fa-regular fa-heart"></i> <span>134</span></button>
+                            <button><i class="fa-regular fa-eye"></i> <span>340</span></button>
+                            <button class="action-right"><i class="fa-regular fa-bookmark"></i></button>
+                            <button><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ПОСТ 4 -->
+<article class="post">
+    <div class="post-avatar">
+        <img src="png/Sylus - Love and Deepspace.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="post-body">
+        <div class="post-header">
+            <span class="author-name">KUMO</span>
+            <span class="author-username">@kumo.art</span>
+            <span class="post-date">· May 21</span>
+            <button class="post-more"><i class="fa-solid fa-ellipsis"></i></button>
+        </div>
+
+        <p class="post-text">
+            quick study 🌙
+            <span class="tag">#sketch</span>
+            <span class="tag">#digitalart</span>
+        </p>
+
+       <div class="post-images tall">
+            <img src="png/photo_2026-05-27_18-36-19.jpg" alt="Art">
+        </div>
+
+        <div class="post-actions">
+            <button><i class="fa-regular fa-comment"></i> <span>3</span></button>
+            <button><i class="fa-solid fa-star"></i> <span>1</span></button>
+            <button><i class="fa-regular fa-heart"></i> <span>22</span></button>
+            <button><i class="fa-regular fa-eye"></i> <span>140</span></button>
+            <button class="action-right"><i class="fa-regular fa-bookmark"></i></button>
+            <button><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+        </div>
+    </div>
+</article>
+
+
+<!-- ПОСТ 5 (FOLLOWING) -->
+<article class="post following-post">
+    <div class="post-avatar">
+        <img src="png/｡ ׂ ꒰ ˳hachiware ꜝ ♡ ׅ ۟ ׅ ᮫.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="post-body">
+        <div class="post-header">
+            <span class="author-name">reira</span>
+            <span class="author-username">@reira.art</span>
+            <span class="post-date">· May 21</span>
+            <button class="post-more"><i class="fa-solid fa-ellipsis"></i></button>
+        </div>
+
+        <p class="post-text">
+            character design dump 
+            <span class="tag">#art</span>
+            <span class="tag">#oc</span>
+            <span class="tag">#digitalart</span>
+        </p>
+
+        <div class="post-images tall">
+            <img src="png/Снимок экрана 2026-05-27 225641.png" alt="Art">
+        </div>
+
+        <div class="post-actions">
+            <button><i class="fa-regular fa-comment"></i> <span>10</span></button>
+            <button><i class="fa-solid fa-star"></i> <span>4</span></button>
+            <button><i class="fa-regular fa-heart"></i> <span>77</span></button>
+            <button><i class="fa-regular fa-eye"></i> <span>410</span></button>
+            <button class="action-right"><i class="fa-regular fa-bookmark"></i></button>
+            <button><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+        </div>
+    </div>
+</article>
+
+
+<!-- ПОСТ 6 -->
+<article class="post">
+    <div class="post-avatar">
+        <img src="png/fcbbdf6a550d4205af73cfe9282f8ec4.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="post-body">
+        <div class="post-header">
+            <span class="author-name">neko</span>
+            <span class="author-username">@neko.lines</span>
+            <span class="post-date">· May 21</span>
+            <button class="post-more"><i class="fa-solid fa-ellipsis"></i></button>
+        </div>
+
+        <p class="post-text">
+            warm palette experiment 
+            <span class="tag">#color</span>
+            <span class="tag">#study</span>
+        </p>
+
+        <div class="post-images tall">
+            <img src="png/photo_2026-05-27_18-36-24.jpg" alt="Art">
+        </div>
+
+        <div class="post-actions">
+            <button><i class="fa-regular fa-comment"></i> <span>6</span></button>
+            <button><i class="fa-solid fa-star"></i> <span>2</span></button>
+            <button><i class="fa-regular fa-heart"></i> <span>51</span></button>
+            <button><i class="fa-regular fa-eye"></i> <span>260</span></button>
+            <button class="action-right"><i class="fa-regular fa-bookmark"></i></button>
+            <button><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+        </div>
+    </div>
+</article>
+
+            </div>
+        </main>
+
+        <!-- УВЕДОМЛЕНИЯ (отдельный блок) -->
+<div class="notifications-feed" style="display: none;">
+    <div class="notification-item">
+        <img src="png/Sylus - Love and Deepspace.jpg" class="avatar">
+        <div class="notification-info">
+            <div class="notification-name">kumo <span class="notification-action">поставил лайк</span></div>
+            <div class="notification-username">@kumo.art</div>
+        </div>
+        <i class="fa-regular fa-heart notification-icon"></i>
+    </div>
+    <div class="notification-item">
+        <img src="png/yok bişi.jpg" class="avatar">
+        <div class="notification-info">
+            <div class="notification-name">vissens <span class="notification-action">поставил лайк</span></div>
+            <div class="notification-username">@wissensv</div>
+        </div>
+        <i class="fa-regular fa-heart notification-icon"></i>
+    </div>
+</div>
+
+<div class="artists-feed" style="display: none;">
+
+    <div class="artist-card">
+        <img src="png/Sylus - Love and Deepspace.jpg" class="avatar">
+
+        <div class="artist-info">
+            <div class="artist-name">
+                kumo
+            </div>
+
+            <div class="artist-username">
+                @kumo.art
+            </div>
+
+            <div class="artist-description">
+                digital artist • sketches • anime art
+            </div>
+        </div>
+
+         <button class="follow-btn">Следить</button>
+    </div>
+
+    <div class="artist-card">
+        <img src="png/yok bişi.jpg" class="avatar">
+
+        <div class="artist-info">
+            <div class="artist-name">
+                vissens
+            </div>
+
+            <div class="artist-username">
+                @wissensv
+            </div>
+
+            <div class="artist-description">
+                manga sketches & digital art
+            </div>
+        </div>
+
+        <button class="follow-btn">Следить</button>
+    </div>
+
+</div>
+
+        <!-- ПРАВАЯ ПАНЕЛЬ -->
+        <aside class="right-sidebar">
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Поиск">
+            </div>
+
+            <div class="widget">
+                <h3>Возможно понравится</h3>
+                <div class="suggested-user">
+                    <img src="png/Sylus - Love and Deepspace.jpg" alt="Avatar" class="avatar-sm">
+                    <div class="user-info">
+                        <span class="name">kumo</span>
+                        <span class="username">@kumo.art</span>
+                    </div>
+                    <button class="btn-view">Посмотреть</button>
+                </div>
+                <a href="#" class="show-more">Показать еще</a>
+            </div>
+
+            <div class="widget">
+                <h3>Актуальные темы</h3>
+                <div class="trend-item">
+                    <span class="trend-rank">1 · Тренды</span>
+                    <span class="trend-tag">#art</span>
+                    <span class="trend-count">12.4 тыс. постов</span>
+                </div>
+                <div class="trend-item">
+                    <span class="trend-rank">2 · Тренды</span>
+                    <span class="trend-tag">#digitalart</span>
+                    <span class="trend-count">8.7 тыс. постов</span>
+                </div>
+                <a href="#" class="show-more">Показать еще</a>
+            </div>
+        </aside>
+
+    </div>
+
+
+</body> сюда
+<div id="modal-overlay" class="modal-overlay"></div>
+
+<div id="modal-publish" class="modal-publish">
+
+    <button class="close-btn" onclick="closeModal()">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="publish-content">
+
+        <img src="png/Sylus ~love and deepspace.jpg" class="avatar">
+
+        <textarea placeholder="Вдохновите других художников"></textarea>
+
+    </div>
+
+    <div class="publish-footer">
+
+        <div class="publish-icons">
+            <i class="fa-regular fa-image"></i>
+            <i class="fa-solid fa-film"></i>
+            <i class="fa-regular fa-face-smile"></i>
+            <i class="fa-solid fa-location-dot"></i>
+        </div>
+
+        <button class="post-btn">Post</button>
+
+    </div>
+
+</div>
+
+<script>
+
+    function openModal() {
+    document.getElementById('modal-overlay').style.display = 'block';
+    document.getElementById('modal-publish').style.display = 'block';
+}
+function closeModal() {
+    document.getElementById('modal-overlay').style.display = 'none';
+    document.getElementById('modal-publish').style.display = 'none';
+    document.getElementById('modal-overlay').addEventListener('click', closeModal);
+}
+
+document.querySelector('.btn-publish').addEventListener('click', openModal);
+
+
+const tabs = document.querySelectorAll('.tab');
+const posts = document.querySelectorAll('.post');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const type = tab.dataset.tab;
+
+        posts.forEach(post => {
+
+            if (type === 'for-you') {
+                post.style.display = '';
+            }
+
+            if (type === 'following') {
+                post.style.display = post.classList.contains('following-post')
+                    ? ''
+                    : 'none';
+            }
+
+        });
+
+    });
+});
+
+const artistsFeed = document.querySelector('.artists-feed');
+const notificationsFeed = document.querySelector('.notifications-feed');
+const feedContainer = document.querySelector('.feed-container');
+const menuItems = document.querySelectorAll('.menu-item');
+
+menuItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+
+        const icon = item.querySelector('i');
+
+        if (icon.classList.contains('fa-envelope')) {
+            window.location.href = 'messages.html';
+            return;
+        }
+
+        e.preventDefault();
+
+        // подсветка только активной кнопки
+        menuItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        
+
+        // Главная
+        if (icon.classList.contains('fa-house')) {
+    feedContainer.style.display = 'flex';
+    artistsFeed.style.display = 'none';
+    notificationsFeed.style.display = 'none'; // добавь
+    feedTabs.style.display = 'flex';
+}
+
+if (icon.classList.contains('fa-compass')) {
+    feedContainer.style.display = 'flex';
+    artistsFeed.style.display = 'none';
+    notificationsFeed.style.display = 'none'; // добавь
+    feedTabs.style.display = 'none';
+    posts.forEach(post => { post.style.display = ''; });
+}
+
+        // Искать художника
+        if (icon.classList.contains('fa-palette')) {
+    feedContainer.style.display = 'none';
+    artistsFeed.style.display = 'block';
+    notificationsFeed.style.display = 'none';
+}
+
+if (icon.classList.contains('fa-bell')) {
+    feedContainer.style.display = 'none';
+    artistsFeed.style.display = 'none';
+    notificationsFeed.style.display = 'block';
+}
+
+        // Лента
+       if (icon.classList.contains('fa-compass')) {
+    feedContainer.style.display = 'flex';
+    artistsFeed.style.display = 'none';
+    feedTabs.style.display = 'none';
+
+    posts.forEach(post => {
+        post.style.display = '';
+    });
+}
+    });
+});
+
+
+
+const feedTabs = document.getElementById('feed-tabs');
+
+document.querySelectorAll('.follow-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        btn.classList.toggle('following');
+
+        btn.textContent = btn.classList.contains('following')
+            ? 'Следуешь'
+            : 'Следить';
+    });
+});
+
+document.querySelectorAll('.like-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        const icon = btn.querySelector('i');
+        const count = btn.querySelector('span');
+
+        let number = parseInt(count.textContent);
+
+        if (icon.classList.contains('fa-regular')) {
+            icon.classList.remove('fa-regular');
+            icon.classList.add('fa-solid');
+            count.textContent = number + 1;
+        } else {
+            icon.classList.remove('fa-solid');
+            icon.classList.add('fa-regular');
+            count.textContent = number - 1;
+        }
+
+    });
+});
+
+document.querySelectorAll('.star-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        const icon = btn.querySelector('i');
+        const count = btn.querySelector('span');
+
+        let number = parseInt(count.textContent);
+
+        if (icon.classList.contains('fa-regular')) {
+            icon.classList.remove('fa-regular');
+            icon.classList.add('fa-solid');
+            count.textContent = number + 1;
+        } else {
+            icon.classList.remove('fa-solid');
+            icon.classList.add('fa-regular');
+            count.textContent = number - 1;
+        }
+
+    });
+});
+
+
+</script>
+

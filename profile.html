@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Network — Ayami</title>
+    <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ЛЕВАЯ ПАНЕЛЬ -->
+    <aside class="left-sidebar">
+        <div class="profile-brief">
+            <img src="png/Sylus ~love and deepspace.jpg" alt="Avatar" class="avatar">
+            <div class="profile-info">
+                <span class="name">Asato.teruko</span>
+                <span class="username">@asato_teruko</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a href="index.html" class="menu-item"><i class="fa-solid fa-house"></i> Главная</a>
+            <a href="#" class="menu-item"><i class="fa-solid fa-compass"></i> Лента</a>
+            <a href="#" class="menu-item"><i class="fa-solid fa-palette"></i> Искать художника</a>
+            <a href="#" class="menu-item"><i class="fa-solid fa-bell"></i> Уведомления</a>
+            <a href="messages.html" class="menu-item"><i class="fa-solid fa-envelope"></i> Сообщения</a>
+        </nav>
+
+        <button class="btn-publish">Опубликовать</button>
+
+        <div class="sidebar-footer">
+            <a href="#">Настройки</a>
+            <a href="#">Помощь</a>
+        </div>
+    </aside>
+
+    <!-- ПРОФИЛЬ -->
+    <main class="profile-container">
+
+        <!-- Шапка профиля -->
+        <div class="profile-header">
+            <a href="index.html" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Ayami</span>
+            </a>
+        </div>
+
+        <!-- Инфо профиля -->
+        <div class="profile-info-block">
+            <div class="profile-top-row">
+                <img src="png/hhmnyaring icon!☆.jpg" alt="Avatar" class="profile-avatar">
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-num">3</span>
+                        <span class="stat-label">posts</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num">1,473</span>
+                        <span class="stat-label">followers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num">662</span>
+                        <span class="stat-label">following</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-bio">
+                <p class="profile-role">Artist<br><span>illustrator</span></p>
+                <p class="profile-desc">нарисую комишки и чибиков на заказ</p>
+            </div>
+
+            <div class="profile-actions">
+                <button class="btn-follow" id="follow-btn" onclick="toggleFollow()">следить</button>
+                <button class="btn-message" onclick="window.location.href='messages.html'">Сообщение</button>
+            </div>
+        </div>
+
+        <!-- Посты профиля -->
+        <div class="profile-posts">
+
+            <article class="post">
+                <div class="post-avatar">
+                    <img src="png/hhmnyaring icon!☆.jpg" alt="Avatar" class="avatar">
+                </div>
+                <div class="post-body">
+                    <div class="post-header">
+                        <span class="author-name">ayami</span>
+                        <span class="author-username">@ayami_draws</span>
+                        <span class="post-date">· May 17</span>
+                        <button class="post-more"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    <p class="post-text">doodle
+                        <span class="tag">#sketch</span>
+                        <span class="tag">#art</span>
+                        <span class="tag">#арт</span>
+                    </p>
+                    <div class="post-images two">
+                        <img src="png/photo_2026-05-19_23-35-43.jpg" alt="Art">
+                        <img src="png/photo_2026-05-19_23-35-43.jpg" alt="Art">
+                    </div>
+                    <div class="post-actions">
+                        <button><i class="fa-regular fa-comment"></i> <span>12</span></button>
+                        <button><i class="fa-solid fa-star"></i> <span>1</span></button>
+                        <button><i class="fa-regular fa-heart"></i> <span>47</span></button>
+                        <button><i class="fa-regular fa-eye"></i> <span>214</span></button>
+                        <button class="action-right"><i class="fa-regular fa-bookmark"></i></button>
+                        <button><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="post">
+                <div class="post-avatar">
+                    <img src="png/hhmnyaring icon!☆.jpg" alt="Avatar" class="avatar">
+                </div>
+                <div class="post-body">
+                    <div class="post-header">
+                        <span class="author-name">ayami</span>
+                        <span class="author-username">@ayami_draws</span>
+                        <span class="post-date">· May 10</span>
+                        <button class="post-more"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    <p class="post-text">wip sketch 🌸
+                        <span class="tag">#wip</span>
+                        <span class="tag">#sketch</span>
+                    </p>
+                    <div class="post-images tall">
+                        <img src="png/photo_2026-05-20_09-17-46.jpg" alt="Art">
+                    </div>
+                    <div class="post-actions">
+                        <button><i class="fa-regular fa-comment"></i> <span>6</span></button>
+                        <button><i class="fa-solid fa-star"></i> <span>0</span></button>
+                        <button><i class="fa-regular fa-heart"></i> <span>31</span></button>
+                        <button><i class="fa-regular fa-eye"></i> <span>180</span></button>
+                        <button class="action-right"><i class="fa-regular fa-bookmark"></i></button>
+                        <button><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- ПРАВАЯ ПАНЕЛЬ -->
+    <aside class="right-sidebar">
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Поиск">
+        </div>
+
+        <div class="widget">
+            <h3>Возможно понравится</h3>
+            <div class="suggested-user">
+                <img src="png/Sylus - Love and Deepspace.jpg" alt="Avatar" class="avatar-sm">
+                <div class="user-info">
+                    <span class="name">kumo</span>
+                    <span class="username">@kumo.art</span>
+                </div>
+                <button class="btn-view">Посмотреть</button>
+            </div>
+            <a href="#" class="show-more">Показать еще</a>
+        </div>
+
+        <div class="widget">
+            <h3>Актуальные темы</h3>
+            <div class="trend-item">
+                <span class="trend-rank">1 · Тренды</span>
+                <span class="trend-tag">#art</span>
+                <span class="trend-count">12.4 тыс. постов</span>
+            </div>
+            <div class="trend-item">
+                <span class="trend-rank">2 · Тренды</span>
+                <span class="trend-tag">#digitalart</span>
+                <span class="trend-count">8.7 тыс. постов</span>
+            </div>
+            <a href="#" class="show-more">Показать еще</a>
+        </div>
+    </aside>
+
+</div>
+
+<script>
+function toggleFollow() {
+    const btn = document.getElementById('follow-btn');
+    btn.classList.toggle('following');
+    btn.textContent = btn.classList.contains('following') ? 'следишь' : 'следить';
+}
+</script>
+
+</body>
+<!-- МОДАЛКА ПУБЛИКАЦИИ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal()"></div>
+
+<div class="modal-publish" id="modal-publish">
+    <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-body">
+        <img src="png/Sylus ~love and deepspace.jpg" alt="Avatar" class="avatar">
+        <textarea class="modal-input" placeholder="вдохновите других художников..."></textarea>
+    </div>
+    <div class="modal-footer">
+        <div class="modal-tools">
+            <button><i class="fa-regular fa-image"></i></button>
+            <button><i class="fa-solid fa-gif"></i></button>
+            <button><i class="fa-regular fa-face-smile"></i></button>
+            <button><i class="fa-solid fa-location-dot"></i></button>
+        </div>
+        <button class="btn-post">Post</button>
+    </div>
+</div>
+</html>
